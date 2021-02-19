@@ -1,0 +1,25 @@
+.header {
+    width: 100%;
+    padding:24px 24px 24px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    .header-links{
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        .logo-container {
+            color: red;
+          }
+          .option{
+              margin:0 15px 0 0;
+          }
+    }
+    .header-search{
+        display: flex;
+        justify-content: end;
+        align-items: center;
+    }
+  }
+  
