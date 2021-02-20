@@ -47,6 +47,7 @@ const DetailsModal: React.FC<any> = (props) => {
         contentLabel="Example Modal"
         appElement={document.getElementById('root') as HTMLElement}
       >
+       <i className="far fa-times-circle icon" onClick={closeModal}></i>
         <MovieDetails {...data} />
       </Modal>
     </div>
