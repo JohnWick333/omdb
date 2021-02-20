@@ -1,29 +1,45 @@
-import {IMovie} from '../../interfaces/movie';
+import { IMovie } from '../../interfaces/movie';
 import FavMoviesActionTypes from './favorite-movies.action.types';
 
-const INITIAL_STATE:IMovie={
-    Poster:"",
-    Title:"",
-    Type:"",
-    Year:"",
-    imdbID:""
+const INITIAL_STATE = {
+    favoriteMovies: [{
+        Poster: "",
+        Title: "",
+        Type: "",
+        Year: "",
+        imdbID: ""
+    }]
 }
 
 interface MovieAction {
- type: string,
- payload:IMovie
+    type: string,
+    payload: IMovie
 }
 
+const selectFavorite = (state: any, selectedMovie: IMovie) => {
+    if (selectedMovie.imdbID && state.favoriteMovies) {
+        debugger
+        const existingMovie = state.favoriteMovies.find((item: IMovie) => item.imdbID === selectedMovie.imdbID);
+        if (existingMovie) {
+            const newState = state.favoriteMovies.filter((item: IMovie) => item.imdbID !== selectedMovie.imdbID)
+            console.log(newState)
+            return { ...state, favoriteMovies: newState };
+        } else {
+            state.favoriteMovies.push(selectedMovie);
+            return { ...state };
+        }
+    } else {
+        return state;
+    }
+}
 
-const moviesReducer=(state=[INITIAL_STATE],action:MovieAction)=>{
-    switch(action.type){
+const favoriteMoviesReducer = (state = INITIAL_STATE, action: MovieAction) => {
+    switch (action.type) {
         case FavMoviesActionTypes.ADD_FAV_MOVIES:
-            return {
-                state:state.push(action.payload)
-            }
+            return selectFavorite(state, action.payload)
         default:
             return state
     }
 }
 
-export default moviesReducer;
+export default favoriteMoviesReducer;

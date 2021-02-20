@@ -1,5 +1,5 @@
-export interface IMovieDetails{
-    Actors?:string,
+export interface IMovieDetails {
+    Actors?: string,
     Awards?: string,
     BoxOffice?: string,
     Country?: string,
@@ -12,16 +12,16 @@ export interface IMovieDetails{
     Poster?: string,
     Production?: string,
     Rated?: string,
-    Ratings?:any,
+    Ratings?: any,
     Released?: string,
     Response?: string,
     Runtime?: string,
     Title?: string,
     Type?: string,
-    Website?:string,
+    Website?: string,
     Writer?: string,
-    Year?:string,
+    Year?: string,
     imdbID?: string,
     imdbRating?: string,
-    imdbVotes?:string,
+    imdbVotes?: string,
 };

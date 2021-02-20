@@ -7,50 +7,50 @@ import './modal.style.scss';
 import { IMovieDetails } from '../../interfaces/movie-details';
 
 const customStyles = {
-    content : {
-      top                   : '50%',
-      left                  : '50%',
-      right                 : 'auto',
-      bottom                : 'auto',
-      marginRight           : '-50%',
-      transform             : 'translate(-50%, -50%)'
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)'
+  }
+};
+
+const DetailsModal: React.FC<any> = (props) => {
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [data, setData] = useState<IMovieDetails>({});
+
+  const featchModalData = async () => {
+    if (props.isOpen) {
+      const url = `http://www.omdbapi.com/?i=${props.itemId}&apikey=e8822b76`;
+      const response = await axios.post(url);
+      setData(response.data);
     }
-  };
-
-const DetailsModal:React.FC<any> =(props)=>{
-  const [modalIsOpen,setIsOpen] = useState(false);
-  const [data,setData] = useState<IMovieDetails>({});
-
-  const featchModalData =async()=>{
-      if(props.isOpen){
-        const url =`http://www.omdbapi.com/?i=${props.itemId}&apikey=e8822b76`;
-        const response = await axios.post(url);
-        setData(response.data);
-      }
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     setIsOpen(props.isOpen);
     featchModalData();
-  },[props.isOpen]);
+  }, [props.isOpen]);
 
-  const closeModal=()=>{
+  const closeModal = () => {
     props.closeModal();
   }
 
-    return (
-      <div>
-        <Modal
-          isOpen={modalIsOpen}
-          onRequestClose={closeModal}
-          style={customStyles}
-          contentLabel="Example Modal"
-          appElement={document.getElementById('root') as HTMLElement}
-        >
-           <MovieDetails {...data} />
-        </Modal>
-      </div>
-    );
+  return (
+    <div>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+        appElement={document.getElementById('root') as HTMLElement}
+      >
+        <MovieDetails {...data} />
+      </Modal>
+    </div>
+  );
 }
 
 export default DetailsModal;
