@@ -7,7 +7,7 @@
     margin-bottom: 25px;
     .header-links{
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         align-items: center;
         .logo-container {
             color: red;
@@ -18,7 +18,7 @@
     }
     .header-search{
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
         align-items: center;
     }
   }

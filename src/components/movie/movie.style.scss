@@ -1,0 +1,34 @@
+.movie{
+    width: 155px;
+    height: 240px;
+    position: relative;
+    margin: 10px;
+    .poster{
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        position: relative;
+        display: inline-block;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        .icon{
+            float: right;
+            padding:10px;
+        } 
+        .cl-r{
+            color: red;
+        }
+        .cl-w{
+            color: white;
+        }
+    }
+    &:hover {
+        .poster {
+          opacity: 0.8;
+        }
+    }
+}
